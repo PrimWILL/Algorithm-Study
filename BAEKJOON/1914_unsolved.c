@@ -28,12 +28,13 @@ int main(void)
 {
     int n = 0;
     char result[MAX];
+    char number[MAX];
     double tmp = 0;
     scanf("%d", &n);
 
     tmp = power(2, n);
 
-    sprintf(result, "%.0f", tmp);
+    sprintf(result, "%.0f", number);
     int size = strlen(result);
     result[size - 1] = (char)(((int)result[size - 1] - '0' - 1) + '0');
     printf("%s\n", result);
@@ -42,3 +43,5 @@ int main(void)
         hanoi_tower(n, '1', '2', '3');
     return 0;
 }
+
+// biginteger를 구현하는거,,,, 공부해야할 듯 이것만 구현하면 맞을 것 같다
