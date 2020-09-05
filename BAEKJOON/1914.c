@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #pragma warning(disable: 4996)
-#define MAX 1000000
+#define MAX 35
 
 void hanoi_tower(int n, char from, char tmp, char to)
 {
@@ -17,27 +17,50 @@ void hanoi_tower(int n, char from, char tmp, char to)
     }
 }
 
-double power(int x, int n)
+void power(int x, int n, char arr[])
 {
-    if (n == 0) return 1;
-    else if (n % 2 == 0) return power(x * x, n / 2);
-    else return (x * power(x * x, (n - 1) / 2));
+    int temp = 0;
+    int last = 0;
+    int cnt = 0;
+    arr[0] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= last; j++) {
+            temp = arr[j] * x;
+            if (temp >= 10) {
+                arr[j] = temp % 10 + cnt;
+                cnt = temp / 10;
+                if (j == last) {
+                    arr[++last] = cnt;
+                    cnt = 0;
+                    break;
+                }
+            }
+            else {
+                arr[j] = temp + cnt;
+                cnt = 0;
+            }
+        }
+    }
+    arr[0] -= 1;
+    for (int i = last; i >= 0; i--) {
+        printf("%d", arr[i]);
+    }
+    printf("\n");
 }
 
 int main(void)
 {
     int n = 0;
-    char result[MAX];
-    char number[MAX];
+    char result[MAX] = { 0 };
     double tmp = 0;
     scanf("%d", &n);
 
-    tmp = power(2, n);
+    power(2, n, result);
 
-    sprintf(result, "%.0f", number);
+    /*sprintf(result, "%.0f", number);
     int size = strlen(result);
     result[size - 1] = (char)(((int)result[size - 1] - '0' - 1) + '0');
-    printf("%s\n", result);
+    printf("%s\n", result);*/
     
     if(n <= 20)
         hanoi_tower(n, '1', '2', '3');
