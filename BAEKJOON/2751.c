@@ -39,7 +39,7 @@ void mergesort(int arr[], int sorted[], int n) {
 
 int main(void)
 {
-    int n;
+    int n = 0;
     scanf("%d", &n);
 
     int arr[n];
