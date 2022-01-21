@@ -26,5 +26,18 @@ def bfs(n):
         visited[x] = True
         infected += 1
 
+def dfs(n):
+    visited[n] = True
+    for x in graph[n]:
+        if not visited[x]:
+            global infected
+            infected += 1
+            dfs(x)
+
 bfs(1)
+print(infected)
+
+visited = [False] * (num + 1)
+infected = 0
+dfs(1)
 print(infected)
