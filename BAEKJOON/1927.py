@@ -9,8 +9,8 @@ for _ in range(N):
 
     if x == 0:
         if q:
-            print(heapq.heappop(q)[1])
+            print(heapq.heappop(q))
         else:
             print(0)
     else:
-        heapq.heappush(q, (x, x))
+        heapq.heappush(q, x)
