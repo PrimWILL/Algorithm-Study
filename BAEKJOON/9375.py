@@ -20,5 +20,3 @@ for _ in range(n):
     cnt *= (x + 1)
 
   print(cnt - 1)
-
-    
