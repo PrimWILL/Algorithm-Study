@@ -7,5 +7,4 @@ dp[0] = seq[0]
 for i in range(1, n):
     dp[i] = max(dp[i - 1] + seq[i], seq[i])
 
-print(dp)
 print(max(dp))
